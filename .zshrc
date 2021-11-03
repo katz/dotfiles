@@ -186,9 +186,11 @@ alias fd=cd-fzf-find
 
 
 # ghqでgetしたレポジトリ一覧をfzfで絞り込み素早くcdする
+# レポジトリのTOPにあるREADMEをbatでpreviewする機能付き
+# https://qiita.com/kompiro/items/a09c0b44e7c741724c80
 function cd-fzf-ghqlist() {
     local GHQ_ROOT=`ghq root`
-    local REPO=`ghq list -p | sed -e 's;'${GHQ_ROOT}/';;g' |fzf +m`
+    local REPO=`ghq list -p | sed -e 's;'${GHQ_ROOT}/';;g' |fzf --height 70% --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*" +m`
     if [ -n "${REPO}" ]; then
         BUFFER="cd ${GHQ_ROOT}/${REPO}"
     fi
