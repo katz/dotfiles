@@ -25,7 +25,6 @@ brew "starship"
 brew "vim"
 brew "wget"
 brew "youtube-dl"
-brew "zplug"
 brew "aws/tap/aws-sam-cli"
 brew "cloudflare/cloudflare/cloudflared"
 brew "sanemat/font/ricty", args: ["with-powerline"]

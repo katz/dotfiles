@@ -1,42 +1,70 @@
-# zplug
-export ZPLUG_HOME=/opt/homebrew/opt/zplug
-source $ZPLUG_HOME/init.zsh
 
-zplug 'zplug/zplug', hook-build:'zplug --self-manage'
-# 非同期処理できるようになる
-zplug "mafredri/zsh-async"
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
 
-# テーマ(ここは好みで。調べた感じpureが人気)
-#zplug "sindresorhus/pure"
-#zplug "eendroroy/alien"
-#zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme, as:theme
-#zplug "themes/wedisagree", from:oh-my-zsh, as:theme
-#zplug "themes/agnoster", from:oh-my-zsh
-#zplug "themes/RobbyRussell", from:oh-my-zsh
-zplug 'dracula/zsh', as:theme
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/z-a-rust \
+    zdharma-continuum/z-a-as-monitor \
+    zdharma-continuum/z-a-patch-dl \
+    zdharma-continuum/z-a-bin-gem-node
+
+### End of Zinit's installer chunk
+
+
+#################################  COMPLEMENT  #################################
+# enable completion
+autoload -Uz compinit && compinit
+
+# 補完候補をそのまま探す -> 小文字を大文字に変えて探す -> 大文字を小文字に変えて探す
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
+
+### 補完方法毎にグループ化する。
+zstyle ':completion:*' format '%B%F{blue}%d%f%b'
+zstyle ':completion:*' group-name ''
+
+
+### 補完侯補をメニューから選択する。
+### select=2: 補完候補を一覧から選択する。補完候補が2つ以上なければすぐに補完する。
+zstyle ':completion:*:default' menu select=2
+
+
+# テーマ
+zinit ice as"theme"
+zinit load dracula/zsh
 
 # 構文のハイライト(https://github.com/zsh-users/zsh-syntax-highlighting)
-zplug "zsh-users/zsh-syntax-highlighting"
+zinit load zsh-users/zsh-syntax-highlighting
 # コマンド入力途中で上下キー押したときの過去履歴がいい感じに出るようになる
-zplug "zsh-users/zsh-history-substring-search"
+zinit load zsh-users/zsh-history-substring-search
 # 過去に入力したコマンドの履歴が灰色のサジェストで出る
-zplug "zsh-users/zsh-autosuggestions"
+zinit load zsh-users/zsh-autosuggestions
 # 補完強化
-zplug "zsh-users/zsh-completions"
+zinit load zsh-users/zsh-completions
 # 256色表示にする
-zplug "chrissicool/zsh-256color"
+zinit load chrissicool/zsh-256color
 # コマンドライン上の文字リテラルの絵文字を emoji 化する
-zplug "mrowa44/emojify", as:command
+zinit ice as"command" cp"zemojify* -> emojify"
+zinit load filipekiss/zemojify
 # install z
-zplug "rupa/z", use:z.sh
+#zplug "rupa/z", use:z.sh
 
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-  printf "Install? [y/N]: "
-  if read -q; then
-    echo; zplug install
-  fi
-fi
+# jq をインタラクティブに使える。JSONを標準出力に出すコマンドを入力した状態で `Alt+j` すると jq のクエリが書ける。
+# 要 jq
+zinit light reegnz/jq-zsh-plugin
+
+
 # コマンドの履歴機能
 # 履歴ファイルの保存先
 HISTFILE=$HOME/.zsh_history
@@ -44,8 +72,6 @@ HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000
 # HISTFILE で指定したファイルに保存される履歴の件数
 SAVEHIST=10000
-# Then, source plugins and add commands to $PATH
-zplug load
 
 
 # >>> conda initialize >>>
@@ -72,22 +98,23 @@ eval "$(fasd --init posix-alias zsh-hook)"
 
 # exa alias
 if [[ $(command -v exa) ]]; then
-  alias e='exa --icons --git'
-  alias l=e
-  alias ls=e
-  alias ea='exa -a --icons --git'
-  alias la=ea
-  alias ee='exa -aahl --icons --git'
-  alias ll=ee
-  alias et='exa -T -L 3 -a -I "node_modules|.git|.cache" --icons'
-  alias lt=et
-  alias eta='exa -T -a -I "node_modules|.git|.cache" --color=always --icons | less -r'
-  alias lta=eta
-  alias l='clear && ls'
+    alias e='exa --icons --git'
+    alias l=e
+    alias ls=e
+    alias ea='exa -a --icons --git'
+    alias la=ea
+    alias ee='exa -aahl --icons --git'
+    alias ll=ee
+    alias et='exa -T -L 3 -a -I "node_modules|.git|.cache" --icons'
+    alias lt=et
+    alias eta='exa -T -a -I "node_modules|.git|.cache" --color=always --icons | less -r'
+    alias lta=eta
+    alias l='clear && ls'
 fi
 
 # fzf
-zplug "junegunn/fzf", from:gh-r, as:command, rename-to:fzf
+zinit ice from"gh-r" as"command" mv"fzf"
+zinit load junegunn/fzf
 
 # ghq
 alias g='cd $(ghq root)/$(ghq list | fzf --reverse)'
@@ -175,3 +202,11 @@ fe() {
   [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
 }
 
+
+zinit ice as"program" from"gh-r" mv"bat* -> bat" pick"bat/bat"
+zinit light sharkdp/bat
+
+# 以下はただのエイリアス設定
+if builtin command -v bat > /dev/null; then
+  alias cat="bat"
+fi
