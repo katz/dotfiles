@@ -18,6 +18,7 @@ brew "ghq"
 brew "gpac"
 brew "graphviz"
 brew "jq"
+brew "mas"
 brew "media-info"
 brew "peco"
 brew "rbenv"
@@ -35,3 +36,16 @@ cask "microsoft-openjdk"
 cask "miniforge"
 cask "ngrok"
 cask "session-manager-plugin"
+mas "1Password 7", id: 1333542190
+mas "CotEditor", id: 1024640650
+mas "Fantastical", id: 975937182
+mas "Kindle", id: 405399194
+mas "MediaInfo", id: 510620098
+mas "Microsoft Remote Desktop", id: 1295203466
+mas "Skitch", id: 425955336
+mas "Slack", id: 803453959
+mas "Tailscale", id: 1475387142
+mas "The Unarchiver", id: 425424353
+mas "White Noise Lite", id: 431364704
+mas "WinArchiver", id: 413215883
+mas "辞書 by 物書堂", id: 1380563956
