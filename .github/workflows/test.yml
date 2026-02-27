@@ -10,7 +10,7 @@ jobs:
   test-ubuntu:
     runs-on: ubuntu-latest
     container:
-      image: ubuntu:latest
+      image: ubuntu:24.04
     steps:
       - uses: actions/checkout@v4
 
@@ -27,7 +27,7 @@ jobs:
   test-alpine:
     runs-on: ubuntu-latest
     container:
-      image: alpine:latest
+      image: alpine:3.21
     steps:
       - uses: actions/checkout@v4
 
