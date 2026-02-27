@@ -2,10 +2,10 @@
 #!/bin/sh
 set -eu
 
-if command -v apt-get &>/dev/null; then
+if command -v apt-get >/dev/null 2>&1; then
   apt-get update
   apt-get install -y git zsh curl wget unzip
-elif command -v apk &>/dev/null; then
+elif command -v apk >/dev/null 2>&1; then
   apk update
   apk add --no-cache git zsh curl wget unzip bash
 fi
