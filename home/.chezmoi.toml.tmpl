@@ -1,8 +1,10 @@
 {{- $name := promptStringOnce . "name" "Your name" -}}
+{{- if not $name -}}{{- fail "name is required" -}}{{- end -}}
 {{- $email := promptStringOnce . "email" "Your email" -}}
+{{- if not $email -}}{{- fail "email is required" -}}{{- end -}}
 
 [data]
   name = {{ $name | quote }}
   email = {{ $email | quote }}
-  isAppleSiliconMac = {{ and (eq .chezmoi.os "darwin") (eq .chezmoi.arch "arm64") }}
-  isLinux = {{ eq .chezmoi.os "linux" }}
+  isAppleSiliconMac = {{ and (eq .chezmoi.os "darwin") (eq .chezmoi.arch "arm64") -}}
+  isLinux = {{ eq .chezmoi.os "linux" -}}
