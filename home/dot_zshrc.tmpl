@@ -1,0 +1,16 @@
+# ~/.zshrc
+
+# XDG Base Directory
+export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_DATA_HOME="${HOME}/.local/share"
+export XDG_CACHE_HOME="${HOME}/.cache"
+
+# PATH
+export PATH="${HOME}/.local/bin:${PATH}"
+
+{{- if .isAppleSiliconMac }}
+# Homebrew (Apple Silicon)
+eval "$(/opt/homebrew/bin/brew shellenv)"
+{{- end }}
+
+# 追加の設定はここに記述する
