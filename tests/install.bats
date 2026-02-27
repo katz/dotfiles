@@ -6,8 +6,8 @@ REPO_ROOT="$(cd "${BATS_TEST_DIRNAME}/.." && pwd)"
   [ -x "${REPO_ROOT}/install/ubuntu/packages.sh" ]
 }
 
-@test "install/alpine/packages.sh is executable" {
-  [ -x "${REPO_ROOT}/install/alpine/packages.sh" ]
+@test "install/arch/packages.sh is executable" {
+  [ -x "${REPO_ROOT}/install/arch/packages.sh" ]
 }
 
 @test "scripts/setup.sh is executable" {

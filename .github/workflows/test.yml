@@ -24,15 +24,15 @@ jobs:
       - name: Run tests
         run: bats tests/
 
-  test-alpine:
+  test-arch:
     runs-on: ubuntu-latest
     container:
-      image: alpine:3.21
+      image: archlinux:latest
     steps:
       - uses: actions/checkout@v4
 
       - name: Install bats
-        run: apk add --no-cache bash bats git
+        run: pacman -Syu --noconfirm bats git
 
       - name: Run tests
         run: bats tests/

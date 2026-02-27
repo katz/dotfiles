@@ -11,8 +11,7 @@ fi
 if command -v apt-get >/dev/null 2>&1; then
   ${SUDO} apt-get update
   ${SUDO} apt-get install -y git zsh curl wget unzip
-elif command -v apk >/dev/null 2>&1; then
-  ${SUDO} apk update
-  ${SUDO} apk add --no-cache git zsh curl wget unzip bash
+elif command -v pacman >/dev/null 2>&1; then
+  ${SUDO} pacman -Syu --noconfirm git zsh curl wget unzip
 fi
 {{- end }}
