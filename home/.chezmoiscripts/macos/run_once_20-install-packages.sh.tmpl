@@ -1,0 +1,6 @@
+{{- if .isAppleSiliconMac }}
+#!/usr/bin/env bash
+set -euo pipefail
+
+brew install chezmoi git zsh sheldon starship
+{{- end }}
