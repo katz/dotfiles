@@ -1,0 +1,12 @@
+{{- if .isLinux }}
+#!/bin/sh
+set -eu
+
+if command -v apt-get &>/dev/null; then
+  apt-get update
+  apt-get install -y git zsh curl wget unzip
+elif command -v apk &>/dev/null; then
+  apk update
+  apk add --no-cache git zsh curl wget unzip bash
+fi
+{{- end }}
