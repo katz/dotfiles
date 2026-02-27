@@ -1,0 +1,36 @@
+name: Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-ubuntu:
+    runs-on: ubuntu-latest
+    container:
+      image: ubuntu:latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install bats
+        run: |
+          apt-get update
+          apt-get install -y bats
+
+      - name: Run tests
+        run: bats tests/
+
+  test-alpine:
+    runs-on: ubuntu-latest
+    container:
+      image: alpine:latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install bats
+        run: apk add --no-cache bash bats git
+
+      - name: Run tests
+        run: bats tests/
