@@ -3,8 +3,8 @@
 set -eu
 
 if command -v apt-get >/dev/null 2>&1; then
-  sh "{{ .chezmoi.sourceDir }}/../install/ubuntu/packages.sh"
+{{ include "../install/ubuntu/packages.sh" }}
 elif command -v pacman >/dev/null 2>&1; then
-  bash "{{ .chezmoi.sourceDir }}/../install/arch/packages.sh"
+{{ include "../install/arch/packages.sh" }}
 fi
 {{- end }}

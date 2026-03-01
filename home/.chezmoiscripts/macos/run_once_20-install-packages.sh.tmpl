@@ -1,6 +1,0 @@
-{{- if .isAppleSiliconMac }}
-#!/usr/bin/env bash
-set -euo pipefail
-
-bash "{{ .chezmoi.sourceDir }}/../install/macos/common/packages.sh"
-{{- end }}
