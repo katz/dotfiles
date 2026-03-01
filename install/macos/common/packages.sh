@@ -81,3 +81,45 @@ brew install \
   k1low/tap/calver \
   stripe/stripe-cli/stripe \
   wader/tap/fq
+
+brew install --cask \
+  1password-cli \
+  alfred \
+  anki \
+  bruno \
+  warashi/tap/cage \
+  charles \
+  cyberduck \
+  db-browser-for-sqlite \
+  devtoys \
+  discord \
+  docker-desktop \
+  evernote \
+  firefox \
+  font-cica \
+  font-hackgen \
+  font-hackgen-nerd \
+  font-ibm-plex-mono \
+  font-noto-sans-cjk-jp \
+  font-plemol-jp \
+  gcloud-cli \
+  ghostty \
+  git-credential-manager \
+  iterm2 \
+  jd-gui \
+  jordanbaird-ice \
+  karabiner-elements \
+  microsoft-openjdk \
+  mysqlworkbench \
+  ngrok \
+  obs \
+  postman \
+  powershell \
+	proxyman \
+  session-manager-plugin \
+  stoplight-studio \
+  teamviewer \
+  visual-studio-code \
+  vivaldi \
+  vlc \
+  zoom
