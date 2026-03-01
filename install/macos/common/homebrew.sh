@@ -1,10 +1,30 @@
 #!/usr/bin/env bash
-set -euo pipefail
 
-if command -v brew &>/dev/null; then
-  echo "Homebrew is already installed"
-  exit 0
+set -Eeuo pipefail
+
+if [ "${DOTFILES_DEBUG:-}" ]; then
+    set -x
 fi
 
-echo "Installing Homebrew..."
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+function is_homebrew_exists() {
+    command -v brew &>/dev/null
+}
+
+function install_homebrew() {
+    if ! is_homebrew_exists; then
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
+}
+
+function opt_out_of_analytics() {
+    brew analytics off
+}
+
+function main() {
+    install_homebrew
+    opt_out_of_analytics
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    main
+fi
