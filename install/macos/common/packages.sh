@@ -6,7 +6,6 @@ if [ "${DOTFILES_DEBUG:-}" ]; then
 fi
 
 PACKAGES=(
-    sheldon
     starship
 )
 

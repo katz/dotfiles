@@ -12,7 +12,6 @@ function teardown() {
 
 @test "[macos-common] PACKAGES contains expected tools" {
     expected_packages=(
-        sheldon
         starship
     )
     [ "${#PACKAGES[@]}" -eq "${#expected_packages[@]}" ]
@@ -23,6 +22,5 @@ function teardown() {
 
 @test "[macos-common] packages are available after install" {
     DOTFILES_DEBUG=1 bash "${SCRIPT_PATH}"
-    [ -x "$(command -v sheldon)" ]
     [ -x "$(command -v starship)" ]
 }
