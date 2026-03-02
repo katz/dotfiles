@@ -1,0 +1,48 @@
+name: Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            system: client
+          - os: ubuntu-latest
+            system: server
+          - os: macos-14
+            system: client
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install bats (Ubuntu)
+        if: runner.os == 'Linux'
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y bats
+
+      - name: Install bats (macOS)
+        if: runner.os == 'macOS'
+        run: brew install bats-core
+
+      - name: Run install tests (common)
+        run: bats tests/install/common/
+
+      - name: Run install tests (Ubuntu)
+        if: runner.os == 'Linux'
+        run: bats tests/install/ubuntu/
+
+      - name: Run install tests (macOS)
+        if: runner.os == 'macOS'
+        run: bats tests/install/macos/
