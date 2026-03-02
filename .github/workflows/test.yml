@@ -39,6 +39,8 @@ jobs:
 
       - name: Install bats (macOS)
         if: runner.os == 'macOS'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: brew install bats-core
 
       - name: Run install tests (common)
@@ -52,6 +54,8 @@ jobs:
 
       - name: Run install tests (macOS)
         if: runner.os == 'macOS'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: bats tests/install/macos/common/
 
   e2e:
