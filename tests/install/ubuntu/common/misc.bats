@@ -15,13 +15,23 @@ function teardown() {
 
 @test "[ubuntu-common] PACKAGES for misc" {
     num_packages="${#PACKAGES[@]}"
-    [ $num_packages -eq 8 ]
+    [ $num_packages -eq 18 ]
 
     expected_packages=(
         busybox
-        cur
+        curl
+        direnv
+        fzf
+        gh
+        git-delta
+        gpg
         htop
         jq
+        peco
+        python3
+        rbenv
+        ripgrep
+        shellcheck
         unzip
         vim
         wget

@@ -8,8 +8,18 @@ fi
 PACKAGES=(
     busybox
     curl
+	direnv
+	fzf
+	gh
+	git-delta
+	gpg
     htop
     jq
+	peco
+	python3
+	rbenv
+	ripgrep
+	shellcheck
     unzip
     vim
     wget
