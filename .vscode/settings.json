@@ -1,0 +1,6 @@
+{
+	"files.associations": {
+		// Renovateの設定ファイルをJSONCとして扱うようにし、JSON Schemaでの補完が効くようにする
+		"renovate.json5": "jsonc"
+	},
+}

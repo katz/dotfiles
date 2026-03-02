@@ -1,0 +1,25 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"extends": [
+		"config:recommended"
+	],
+	"timezone": "Asia/Tokyo",
+	"schedule": [
+		"after 10am and before 6pm every weekday"
+	],
+	"labels": [ "renovate" ],
+	"configMigration": true,
+	"prHourlyLimit": 5,
+	// リリース後7日経っていればデグレや悪意のあるコード混入も世の中で発見されている可能性が高いという想定
+	"minimumReleaseAge": "7 days",
+	"reviewers": [ "katz" ],
+
+	"packageRules": [
+		// GitHub Actionsの更新ルール
+		{
+			"matchDepTypes": [ "action" ],
+			"enabled": true,
+			"pinDigests": true,
+		}
+	]
+}
