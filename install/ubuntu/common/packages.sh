@@ -5,9 +5,8 @@ if [ "${DOTFILES_DEBUG:-}" ]; then
     set -x
 fi
 
-readonly PACKAGES=(
+PACKAGES=(
     curl
-    git
     unzip
     wget
     zsh
