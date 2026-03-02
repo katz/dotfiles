@@ -76,10 +76,41 @@ BREW_PACKAGES=(
 )
 
 CASK_PACKAGES=(
+    1password-cli
+    alfred
+    charles
+    cyberduck
+    devtoys
+    discord
+    docker-desktop
+    evernote
+    firefox
+    font-cica
+    font-hackgen
+    font-hackgen-nerd
+    font-ibm-plex-mono
+    font-noto-sans-cjk-jp
+    font-plemol-jp
+    gcloud-cli
+    ghostty
+    git-credential-manager
     google-chrome
-    google-japanese-ime
-    rectangle
+    iterm2
+    jordanbaird-ice
+    karabiner-elements
+    ngrok
+    obs
+    postman
+    powershell
+    proxyman
+    rectangle-pro
+    session-manager-plugin
+    stoplight-studio
+    teamviewer
     visual-studio-code
+    vivaldi
+    vlc
+    zoom
 )
 
 function is_brew_package_installed() {
