@@ -5,12 +5,87 @@
 [core]
   excludesfile = ~/.gitignore_global
   autocrlf = input
+	pager = delta
 
 [init]
   defaultBranch = main
 
 [pull]
   rebase = true
+  ff = only
 
 [push]
   autoSetupRemote = true
+
+[merge]
+  ff = false
+  conflictstyle = zdiff3
+
+[transfer]
+  fsckobjects = true
+
+[fetch]
+  fsckobjects = true
+
+[receive]
+  fsckObjects = true
+
+[diff]
+  algorithm = histogram
+  context = 10
+
+[branch]
+  sort = -committerdate
+
+[tag]
+  sort = taggerdate
+
+[log]
+  date = iso
+
+[rebase]
+  autostash = true
+
+[rerere]
+  enabled = true
+
+[delta]
+  line-numbers = true
+  # side-by-side = true
+  navigate = true  # use n and N to move between diff sections
+  hyperlinks = true
+  hyperlinks-file-link-format = "vscode://file/{path}:{line}"
+  # features = woolly-mammoth
+
+[delta "woolly-mammoth"]
+  # author: https://github.com/Kr1ss-XD
+  commit-decoration-style = 232 130 box
+  commit-style = 232 bold italic 130
+  dark = true
+  file-added-label = [+]
+  file-copied-label = [C]
+  file-decoration-style = "#606018" overline
+  file-modified-label = [M]
+  file-removed-label = [-]
+  file-renamed-label = [R]
+  file-style = 232 bold 184
+  hunk-header-decoration-style = none
+  hunk-header-style = syntax bold italic 237
+  line-numbers = true
+  line-numbers-left-format = "{nm:>1}┊"
+  line-numbers-left-style = red
+  line-numbers-minus-style = red italic black
+  line-numbers-plus-style = green italic black
+  line-numbers-right-format = "{np:>1}┊"
+  line-numbers-right-style = green
+  line-numbers-zero-style = "#545474" italic
+  minus-emph-style = syntax bold "#780000"
+  minus-style = syntax "#400000"
+  plus-emph-style = syntax bold "#007800"
+
+[alias]
+  pushff = push --force-with-lease --force-if-includes
+
+[gpg]
+  format = ssh
+
