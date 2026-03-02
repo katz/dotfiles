@@ -7,7 +7,6 @@ fi
 
 PACKAGES=(
     curl
-    git
     unzip
     wget
     zsh
@@ -19,13 +18,7 @@ function install_packages() {
         SUDO="sudo"
     fi
     ${SUDO} apt-get update
-    local to_install=()
-    for pkg in "${PACKAGES[@]}"; do
-        command -v "$pkg" >/dev/null 2>&1 || to_install+=("$pkg")
-    done
-    if [ "${#to_install[@]}" -gt 0 ]; then
-        ${SUDO} apt-get install -y "${to_install[@]}"
-    fi
+    ${SUDO} apt-get install -y "${PACKAGES[@]}"
 }
 
 function uninstall_packages() {
