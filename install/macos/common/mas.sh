@@ -8,8 +8,19 @@ fi
 # Mac App Store app IDs to install.
 # Find app IDs with: mas search <app-name>
 MAS_APPS=(
-    # 539883307  # LINE
-    # 497799835  # Xcode
+    1569813296  # 1password_for_safari
+    1037126344  # apple_configurator
+	1024640650  # coteditor
+	1444383602  # goodnotes
+	1487860882  # imazing_profile_editor
+	414781829   # keeper
+	302584613   # kindle
+	510620098   # mediainfo
+	1289583905  # pixelmator
+	425955336	# skitch
+	803453959	# slack
+	425424353	# the_unarchiver
+	1380563956	# jisho_by_monokakido
 )
 
 function install_mas() {
