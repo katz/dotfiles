@@ -15,12 +15,11 @@ function teardown() {
 
 @test "[ubuntu-common] PACKAGES for misc" {
     num_packages="${#PACKAGES[@]}"
-    [ $num_packages -eq 9 ]
+    [ $num_packages -eq 8 ]
 
     expected_packages=(
         busybox
-        curl
-        gpg
+        cur
         htop
         jq
         unzip

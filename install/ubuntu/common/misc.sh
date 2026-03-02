@@ -8,7 +8,6 @@ fi
 PACKAGES=(
     busybox
     curl
-    gpg
     htop
     jq
     unzip
