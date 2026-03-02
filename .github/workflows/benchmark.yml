@@ -16,10 +16,22 @@ jobs:
       - name: Install dependencies
         run: brew install gnu-time chezmoi
 
+      - name: Configure chezmoi for CI
+        run: |
+          mkdir -p "${HOME}/.config/chezmoi"
+          cat > "${HOME}/.config/chezmoi/chezmoi.yaml" <<'EOF'
+          data:
+            name: "CI User"
+            email: "ci@example.com"
+            system: "client"
+            isAppleSiliconMac: true
+            isLinux: false
+            isClient: true
+            isServer: false
+          EOF
+
       - name: Apply dotfiles
-        env:
-          CHEZMOI_CONFIG_TEMPLATE_DATA: '{"name":"CI User","email":"ci@example.com","system":"client"}'
-        run: chezmoi init --apply --source="${GITHUB_WORKSPACE}/home"
+        run: chezmoi apply --source="${GITHUB_WORKSPACE}/home"
 
       - name: Run benchmark
         run: scripts/run_benchmark.sh | tee benchmark-result.json
