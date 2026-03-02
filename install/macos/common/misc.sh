@@ -27,7 +27,6 @@ BREW_PACKAGES=(
     exif
     exiftool
     eza
-    fasd
     ffmpeg
     fzf
     gh

@@ -54,8 +54,6 @@ function setup() {
     [ "${status}" -eq 0 ]
     run brew info eza
     [ "${status}" -eq 0 ]
-    run brew info fasd
-    [ "${status}" -eq 0 ]
     run brew info ffmpeg
     [ "${status}" -eq 0 ]
     run brew info fzf
