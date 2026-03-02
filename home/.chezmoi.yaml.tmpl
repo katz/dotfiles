@@ -1,11 +1,10 @@
 {{- $system := "" -}}
-{{- if hasKey . "system" -}}
-{{-   $system = .system -}}
-{{- else if eq .chezmoi.os "darwin" -}}
+{{- if eq .chezmoi.os "darwin" -}}
 {{-   $system = "client" -}}
 {{- else -}}
 {{-   $system = promptStringOnce . "system" "System (client or server)" -}}
 {{- end -}}
+{{- if not $system -}}{{- fail "system is required" -}}{{- end -}}
 
 {{- $name := promptStringOnce . "name" "Your name" -}}
 {{- if not $name -}}{{- fail "name is required" -}}{{- end -}}
@@ -19,4 +18,4 @@
   isAppleSiliconMac = {{ and (eq .chezmoi.os "darwin") (eq .chezmoi.arch "arm64") -}}
   isLinux = {{ eq .chezmoi.os "linux" -}}
   isClient = {{ eq $system "client" -}}
-  isServer = {{ eq $system "server" -}}
+  isServer = {{ eq $system "server" }}
