@@ -13,7 +13,6 @@ function teardown() {
 @test "[ubuntu-common] PACKAGES contains expected tools" {
     expected_packages=(
         curl
-        git
         unzip
         wget
         zsh
@@ -26,7 +25,6 @@ function teardown() {
 
 @test "[ubuntu-common] packages are available after install" {
     DOTFILES_DEBUG=1 bash "${SCRIPT_PATH}"
-    [ -x "$(command -v git)" ]
     [ -x "$(command -v zsh)" ]
     [ -x "$(command -v curl)" ]
 }

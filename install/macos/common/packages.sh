@@ -5,7 +5,7 @@ if [ "${DOTFILES_DEBUG:-}" ]; then
     set -x
 fi
 
-readonly PACKAGES=(
+PACKAGES=(
     sheldon
     starship
 )
