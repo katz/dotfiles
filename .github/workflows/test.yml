@@ -41,8 +41,8 @@ jobs:
 
       - name: Run install tests (Ubuntu)
         if: runner.os == 'Linux'
-        run: bats tests/install/ubuntu/
+        run: bats tests/install/ubuntu/common/
 
       - name: Run install tests (macOS)
         if: runner.os == 'macOS'
-        run: bats tests/install/macos/
+        run: bats tests/install/macos/common/

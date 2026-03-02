@@ -17,6 +17,8 @@ jobs:
         run: brew install gnu-time chezmoi
 
       - name: Apply dotfiles
+        env:
+          CHEZMOI_CONFIG_TEMPLATE_DATA: '{"name":"CI User","email":"ci@example.com","system":"client"}'
         run: chezmoi init --apply --source="${GITHUB_WORKSPACE}/home"
 
       - name: Run benchmark
