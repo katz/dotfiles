@@ -46,3 +46,48 @@ jobs:
       - name: Run install tests (macOS)
         if: runner.os == 'macOS'
         run: bats tests/install/macos/common/
+
+  e2e:
+    name: E2E (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            system: client
+            isAppleSiliconMac: "false"
+            isLinux: "true"
+          - os: macos-14
+            system: client
+            isAppleSiliconMac: "true"
+            isLinux: "false"
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Set branch name
+        run: echo "BRANCH_NAME=${{ github.head_ref || github.ref_name }}" >> "${GITHUB_ENV}"
+
+      - name: Pre-create chezmoi config (bypass promptStringOnce in CI)
+        run: |
+          mkdir -p "${HOME}/.config/chezmoi"
+          cat > "${HOME}/.config/chezmoi/chezmoi.yaml" <<EOF
+          data:
+            name: "CI User"
+            email: "ci@example.com"
+            system: "${{ matrix.system }}"
+            isAppleSiliconMac: ${{ matrix.isAppleSiliconMac }}
+            isLinux: ${{ matrix.isLinux }}
+            isClient: true
+            isServer: false
+          EOF
+
+      - name: Run setup.sh from branch URL
+        env:
+          DOTFILES_BRANCH: ${{ env.BRANCH_NAME }}
+        run: bash <(curl -fsSL "https://raw.githubusercontent.com/katz/dotfiles/${BRANCH_NAME}/scripts/setup.sh")
+
+      - name: Verify dotfiles were applied
+        run: |
+          [ -f "${HOME}/.gitconfig" ] && echo "✓ .gitconfig exists" || (echo "✗ .gitconfig missing" && exit 1)
+          [ -f "${HOME}/.zshrc" ]    && echo "✓ .zshrc exists"    || (echo "✗ .zshrc missing" && exit 1)

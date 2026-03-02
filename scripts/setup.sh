@@ -16,6 +16,11 @@ set -Eeuo pipefail
 readonly GITHUB_USER="katz"
 readonly DOTFILES_REPO="dotfiles"
 
+# Branch to use for chezmoi init (defaults to repo default branch).
+# Set via env var to test a specific branch in CI.
+DOTFILES_BRANCH="${DOTFILES_BRANCH:-}"
+readonly DOTFILES_BRANCH
+
 CHEZMOI_BIN=""
 
 # ---------------------------------------------------------------------------
@@ -157,8 +162,13 @@ run_chezmoi() {
         CHEZMOI_BIN="$(command -v chezmoi)"
     fi
 
+    local branch_flag=""
+    if [ -n "${DOTFILES_BRANCH}" ]; then
+        branch_flag="--branch ${DOTFILES_BRANCH}"
+    fi
+
     # shellcheck disable=SC2086
-    "${CHEZMOI_BIN}" init ${no_tty_flag} "https://github.com/${GITHUB_USER}/${DOTFILES_REPO}.git"
+    "${CHEZMOI_BIN}" init ${no_tty_flag} ${branch_flag} "https://github.com/${GITHUB_USER}/${DOTFILES_REPO}.git"
 
     # shellcheck disable=SC2086
     "${CHEZMOI_BIN}" apply ${no_tty_flag}
