@@ -1,0 +1,11 @@
+#
+# Homebrew for macOS
+#
+
+[plugins.homebrew]
+inline = '''
+function _homebrew() {
+    export HOMEBREW_NO_AUTO_UPDATE=1
+}
+zsh-defer _homebrew
+'''

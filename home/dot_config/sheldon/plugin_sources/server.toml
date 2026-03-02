@@ -1,0 +1,6 @@
+#
+# Prompt for Server Machine
+#
+
+[plugins.starship]
+inline = 'eval "$(starship init zsh)"'
