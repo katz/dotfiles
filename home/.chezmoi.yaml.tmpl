@@ -1,0 +1,22 @@
+{{- $system := "" -}}
+{{- if hasKey . "system" -}}
+{{-   $system = .system -}}
+{{- else if eq .chezmoi.os "darwin" -}}
+{{-   $system = "client" -}}
+{{- else -}}
+{{-   $system = promptStringOnce . "system" "System (client or server)" -}}
+{{- end -}}
+
+{{- $name := promptStringOnce . "name" "Your name" -}}
+{{- if not $name -}}{{- fail "name is required" -}}{{- end -}}
+{{- $email := promptStringOnce . "email" "Your email" -}}
+{{- if not $email -}}{{- fail "email is required" -}}{{- end -}}
+
+[data]
+  name = {{ $name | quote }}
+  email = {{ $email | quote }}
+  system = {{ $system | quote }}
+  isAppleSiliconMac = {{ and (eq .chezmoi.os "darwin") (eq .chezmoi.arch "arm64") -}}
+  isLinux = {{ eq .chezmoi.os "linux" -}}
+  isClient = {{ eq $system "client" -}}
+  isServer = {{ eq $system "server" -}}
