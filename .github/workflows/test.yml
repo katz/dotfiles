@@ -46,3 +46,51 @@ jobs:
       - name: Run install tests (macOS)
         if: runner.os == 'macOS'
         run: bats tests/install/macos/common/
+
+  e2e:
+    name: E2E (${{ matrix.os }}, ${{ matrix.system }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            system: client
+          - os: ubuntu-latest
+            system: server
+          - os: macos-14
+            system: client
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Setup dotfiles via setup.sh
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          DOTFILES_DEBUG: 1
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SYSTEM: ${{ matrix.system }}
+        run: |
+          if [ "${EVENT_NAME}" = "push" ]; then
+            BRANCH_NAME="${{ github.ref_name }}"
+          elif [ "${EVENT_NAME}" = "pull_request" ]; then
+            BRANCH_NAME="${{ github.head_ref }}"
+          fi
+          export BRANCH_NAME
+          export DOTFILES_BRANCH="${BRANCH_NAME}"
+
+          URL="https://raw.githubusercontent.com/katz/dotfiles/${BRANCH_NAME}/scripts/setup.sh"
+          echo "Downloading setup.sh from ${URL}"
+
+          # Pipe prompt answers to chezmoi's promptStringOnce (order matches .chezmoi.yaml.tmpl):
+          #   macOS: name → email          (system is auto-set to "client")
+          #   Linux: system → name → email
+          if [ "${RUNNER_OS}" = "macOS" ]; then
+            printf "CI User\nci@example.com\n" | bash -c "$(curl -fsSL "${URL}")"
+          else
+            printf "${SYSTEM}\nCI User\nci@example.com\n" | bash -c "$(curl -fsSL "${URL}")"
+          fi
+
+      - name: Verify dotfiles were applied
+        run: |
+          [ -f "${HOME}/.gitconfig" ] && echo "✓ .gitconfig exists" || (echo "✗ .gitconfig missing" && exit 1)
+          [ -f "${HOME}/.zshrc" ]    && echo "✓ .zshrc exists"    || (echo "✗ .zshrc missing" && exit 1)
