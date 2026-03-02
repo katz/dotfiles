@@ -148,16 +148,6 @@ function setup() {
     [ "${status}" -eq 0 ]
     run brew info yt-dlp
     [ "${status}" -eq 0 ]
-    run brew info dockle
-    [ "${status}" -eq 0 ]
-    run brew info terraform
-    [ "${status}" -eq 0 ]
-    run brew info calver
-    [ "${status}" -eq 0 ]
-    run brew info stripe
-    [ "${status}" -eq 0 ]
-    run brew info fq
-    [ "${status}" -eq 0 ]
 
     #
     # Cask packages

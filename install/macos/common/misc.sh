@@ -74,11 +74,6 @@ BREW_PACKAGES=(
     wget
     yq
     yt-dlp
-    goodwithtech/r/dockle
-    hashicorp/tap/terraform
-    k1low/tap/calver
-    stripe/stripe-cli/stripe
-    wader/tap/fq
 )
 
 CASK_PACKAGES=(
