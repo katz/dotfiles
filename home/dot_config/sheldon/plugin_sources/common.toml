@@ -9,6 +9,15 @@ zsh-defer source "{{ file }}"
 {{ hooks?.post | nl }}
 """
 
+fzf-install = """
+{{ hooks?.pre | nl }}
+{{ dir }}/install --bin > /dev/null
+path=($path {{ dir }}/bin(N-/))
+{{ hooks?.post | nl }}
+"""
+
+fzf-source = "source <(fzf --zsh)"
+
 #
 # Deferred Loading of Plugins in Zsh
 #
@@ -40,9 +49,57 @@ apply = ['defer']
 github = 'zsh-users/zsh-syntax-highlighting'
 apply = ['defer']
 
+[plugins.zsh-autopair]
+github = 'hlissner/zsh-autopair'
+apply = ['defer']
+
+[plugins.zsh-history-on-success]
+github = 'nyoungstudios/zsh-history-on-success'
+
+[plugins.oh-my-zsh]
+github = "ohmyzsh/ohmyzsh"
+use = [
+	#
+	# Load necessary functions first
+	#
+	'lib/functions.zsh',
+	#
+	# Load other useful libraries
+	#
+	'lib/completion.zsh',
+	'lib/history.zsh',
+	'lib/termsupport.zsh',
+	#
+	# Load some plugins
+	#
+	'plugins/fzf/fzf.plugin.zsh',
+]
+
+[plugins.zsh-history-shell-options]
+inline = '''
+setopt INC_APPEND_HISTORY_TIME
+setopt INC_APPEND_HISTORY
+'''
+
 #
 # Mise for managing multiple versions of tools
 #
 
 [plugins.mise]
 inline = 'eval "$(~/.local/bin/mise activate zsh)"'
+
+#
+# Language-related plugins
+#
+
+[plugins.lang]
+inline = '''
+function _lang() {
+    export LANG='en_US.UTF-8'
+}
+zsh-defer _lang
+'''
+
+[plugins.theme-dracula]
+github = 'dracula/zsh'
+apply = ['defer']
