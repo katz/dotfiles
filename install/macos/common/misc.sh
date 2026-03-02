@@ -6,11 +6,79 @@ if [ "${DOTFILES_DEBUG:-}" ]; then
 fi
 
 BREW_PACKAGES=(
-    git
     vim
     htop
-    jq
+    apktool
+    argocd
+    certifi
+    aws-sam-cli
+    awscli
+    azure-cli
+    biome
+    blueutil
+    cloudflared
+    cmake
+    lima
+    colima
+    coreutils
+    curl
+    direnv
+    dive
+    exif
+    exiftool
+    eza
+    fasd
+    ffmpeg
+    fzf
+    gh
+    ghalint
     ghq
+    git-delta
+    go
+    gpac
+    graphviz
+    gron
+    hadolint
+    helm
+    hey
+    jq
+    kubectx
+    kustomize
+    libffi
+    mas
+    media-info
+    mysql-client
+    nmap
+    oha
+    peco
+    pinact
+    pkgconf
+    poetry
+    uv
+    poppler
+    pulumi
+    pyenv
+    python
+    rbenv
+    ripgrep
+    rustscan
+    samba
+    shellcheck
+    telnet
+    tflint
+    tfsec
+    tnftp
+    trivy
+    unshield
+    vim
+    wget
+    yq
+    yt-dlp
+    goodwithtech/r/dockle
+    hashicorp/tap/terraform
+    k1low/tap/calver
+    stripe/stripe-cli/stripe
+    wader/tap/fq
 )
 
 CASK_PACKAGES=(
