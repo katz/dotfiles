@@ -1,0 +1,3 @@
+{{- if and .isLinux .isClient -}}
+{{ include "../install/ubuntu/client/docker.sh" }}
+{{- end }}

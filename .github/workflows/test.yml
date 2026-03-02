@@ -52,6 +52,10 @@ jobs:
         if: runner.os == 'Linux'
         run: bats tests/install/ubuntu/common/
 
+      - name: Run install tests (Ubuntu client)
+        if: runner.os == 'Linux' && matrix.system == 'client'
+        run: bats tests/install/ubuntu/client/
+
       - name: Run install tests (macOS)
         if: runner.os == 'macOS'
         env:
