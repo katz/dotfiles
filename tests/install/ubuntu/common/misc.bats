@@ -15,14 +15,18 @@ function teardown() {
 
 @test "[ubuntu-common] PACKAGES for misc" {
     num_packages="${#PACKAGES[@]}"
-    [ $num_packages -eq 5 ]
+    [ $num_packages -eq 9 ]
 
     expected_packages=(
         busybox
+        curl
         gpg
         htop
         jq
+        unzip
         vim
+        wget
+        zsh
     )
     for ((i = 0; i < ${#expected_packages[*]}; ++i)); do
         [ "${PACKAGES[$i]}" == "${expected_packages[$i]}" ]
@@ -33,8 +37,11 @@ function teardown() {
     DOTFILES_DEBUG=1 bash "${SCRIPT_PATH}"
 
     [ -x "$(command -v busybox)" ]
+    [ -x "$(command -v curl)" ]
     [ -x "$(command -v gpg)" ]
     [ -x "$(command -v htop)" ]
     [ -x "$(command -v jq)" ]
     [ -x "$(command -v vim)" ]
+    [ -x "$(command -v wget)" ]
+    [ -x "$(command -v zsh)" ]
 }

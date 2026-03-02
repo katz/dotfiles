@@ -7,10 +7,14 @@ fi
 
 PACKAGES=(
     busybox
+    curl
     gpg
     htop
     jq
+    unzip
     vim
+    wget
+    zsh
 )
 
 function install_misc() {
