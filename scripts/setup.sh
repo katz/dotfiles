@@ -21,8 +21,6 @@ readonly DOTFILES_REPO="dotfiles"
 DOTFILES_BRANCH="${DOTFILES_BRANCH:-}"
 readonly DOTFILES_BRANCH
 
-CHEZMOI_BIN=""
-
 # ---------------------------------------------------------------------------
 # Environment detection
 # ---------------------------------------------------------------------------
@@ -140,26 +138,24 @@ initialize_os_env() {
 # chezmoi
 # ---------------------------------------------------------------------------
 
-_cleanup_chezmoi_bin() {
-    if [ -n "${CHEZMOI_BIN}" ] && [ -f "${CHEZMOI_BIN}" ]; then
-        rm -f "${CHEZMOI_BIN}"
-    fi
-}
-
 run_chezmoi() {
     local no_tty_flag=""
     if is_ci_or_not_tty; then
         no_tty_flag="--no-tty"
     fi
 
+    local chezmoi
     if ! command -v chezmoi >/dev/null 2>&1; then
         echo "Installing chezmoi..."
-        CHEZMOI_BIN="$(mktemp)"
-        at_exit "_cleanup_chezmoi_bin"
-        sh -c "$(curl -fsSL get.chezmoi.io)" -- -b "$(dirname "${CHEZMOI_BIN}")" -t "${CHEZMOI_BIN##*/}"
-        chmod +x "${CHEZMOI_BIN}"
+        # Install chezmoi into a temp directory (-b DIR installs binary there).
+        # Do NOT pass -t: that flag sets a version tag, not the binary name.
+        local install_dir
+        install_dir="$(mktemp -d)"
+        at_exit "rm -rf '${install_dir}'"
+        sh -c "$(curl -fsSL get.chezmoi.io)" -- -b "${install_dir}"
+        chezmoi="${install_dir}/chezmoi"
     else
-        CHEZMOI_BIN="$(command -v chezmoi)"
+        chezmoi="$(command -v chezmoi)"
     fi
 
     local branch_flag=""
@@ -168,10 +164,10 @@ run_chezmoi() {
     fi
 
     # shellcheck disable=SC2086
-    "${CHEZMOI_BIN}" init ${no_tty_flag} ${branch_flag} "https://github.com/${GITHUB_USER}/${DOTFILES_REPO}.git"
+    "${chezmoi}" init ${no_tty_flag} ${branch_flag} "https://github.com/${GITHUB_USER}/${DOTFILES_REPO}.git"
 
     # shellcheck disable=SC2086
-    "${CHEZMOI_BIN}" apply ${no_tty_flag}
+    "${chezmoi}" apply ${no_tty_flag}
 }
 
 # ---------------------------------------------------------------------------
