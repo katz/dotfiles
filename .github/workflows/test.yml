@@ -8,6 +8,9 @@ on:
 
 jobs:
   test:
+    timeout-minutes: 5
+    permissions:
+      contents: "read"
     strategy:
       fail-fast: false
       matrix:
@@ -49,6 +52,9 @@ jobs:
 
   e2e:
     name: E2E (${{ matrix.os }}, ${{ matrix.system }})
+    timeout-minutes: 5
+    permissions:
+      contents: "read"
     strategy:
       fail-fast: false
       matrix:
