@@ -1,18 +1,32 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -Eeuo pipefail
 
 if [ "${DOTFILES_DEBUG:-}" ]; then
     set -x
 fi
 
 PACKAGES=(
+    busybox
     curl
+	direnv
+	fzf
+	gh
+	git-delta
+	gpg
+    htop
+    jq
+	peco
+	python3
+	rbenv
+	ripgrep
+	shellcheck
     unzip
+    vim
     wget
     zsh
 )
 
-function install_packages() {
+function install_misc() {
     local SUDO=""
     if [ "$(id -u)" -ne 0 ]; then
         SUDO="sudo"
@@ -21,7 +35,7 @@ function install_packages() {
     ${SUDO} apt-get install -y "${PACKAGES[@]}"
 }
 
-function uninstall_packages() {
+function uninstall_misc() {
     local SUDO=""
     if [ "$(id -u)" -ne 0 ]; then
         SUDO="sudo"
@@ -30,5 +44,5 @@ function uninstall_packages() {
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    install_packages
+    install_misc
 fi
