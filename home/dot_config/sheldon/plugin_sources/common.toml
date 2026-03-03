@@ -145,7 +145,7 @@ fi
 #
 
 [plugins.zoxide]
-inline = 'eval "$(zoxide init zsh)"'
+inline = '[[ $(command -v zoxide) ]] && eval "$(zoxide init zsh)"'
 
 #
 # Prompt
