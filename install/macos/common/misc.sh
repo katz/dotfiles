@@ -73,6 +73,7 @@ BREW_PACKAGES=(
     wget
     yq
     yt-dlp
+    zoxide
 )
 
 CASK_PACKAGES=(

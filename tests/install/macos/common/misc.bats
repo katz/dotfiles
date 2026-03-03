@@ -146,6 +146,8 @@ function setup() {
     [ "${status}" -eq 0 ]
     run brew info yt-dlp
     [ "${status}" -eq 0 ]
+    run brew info zoxide
+    [ "${status}" -eq 0 ]
 
     #
     # Cask packages
