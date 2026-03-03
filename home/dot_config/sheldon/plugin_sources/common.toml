@@ -140,6 +140,22 @@ if [[ $(command -v eza) ]]; then
 fi
 '''
 
+[plugins.history-fzf]
+inline = '''
+# historyをfzfで絞り込む
+function buffer-fzf-history() {
+    local HISTORY=$(history -n -r 1 | fzf +m)
+    BUFFER=$HISTORY
+    if [ -n "$HISTORY" ]; then
+        CURSOR=$#BUFFER
+    else
+        zle accept-line
+    fi
+}
+zle -N buffer-fzf-history
+bindkey '^R' buffer-fzf-history
+'''
+
 [plugins.rbenv]
 inline = '[[ $(command -v rbenv) ]] && eval "$(rbenv init - zsh)"'
 
