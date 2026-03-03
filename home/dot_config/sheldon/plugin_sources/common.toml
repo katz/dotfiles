@@ -140,6 +140,12 @@ if [[ $(command -v eza) ]]; then
 fi
 '''
 
+[plugins.rbenv]
+inline = '[[ $(command -v rbenv) ]] && eval "$(rbenv init - zsh)"'
+
+[plugins.direnv]
+inline = '[[ $(command -v direnv) ]] && eval "$(direnv hook zsh)"'
+
 #
 # Zoxide (smarter cd)
 #
