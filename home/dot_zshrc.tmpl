@@ -25,6 +25,9 @@ fpath=(
 eval "$(/opt/homebrew/bin/brew shellenv)"
 {{- end }}
 
+# Cargo (Rust)
+[[ -f "${HOME}/.cargo/env" ]] && . "${HOME}/.cargo/env"
+
 # Sheldon (plugin manager)
 # Handles mise activation, starship prompt, and zsh plugins
 eval "$(sheldon source)"
