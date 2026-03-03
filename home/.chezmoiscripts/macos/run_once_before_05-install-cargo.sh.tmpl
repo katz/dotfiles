@@ -1,3 +1,3 @@
-{{- if and .isLinux .isClient -}}
+{{- if .isAppleSiliconMac -}}
 {{ include "../install/common/cargo.sh" }}
 {{- end }}
