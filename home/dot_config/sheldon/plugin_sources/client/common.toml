@@ -1,6 +1,0 @@
-#
-# Prompt for Client Machine
-#
-
-[plugins.starship]
-inline = 'eval "$(starship init zsh)"'
