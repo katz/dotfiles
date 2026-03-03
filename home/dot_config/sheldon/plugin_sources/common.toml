@@ -141,6 +141,13 @@ fi
 '''
 
 #
+# Zoxide (smarter cd)
+#
+
+[plugins.zoxide]
+inline = 'eval "$(zoxide init zsh)"'
+
+#
 # Prompt
 #
 
