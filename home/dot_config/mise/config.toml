@@ -1,3 +1,4 @@
 [tools]
+ghq = "latest"
 "github:suzuki-shunsuke/ghalint" = "latest"
 "github:suzuki-shunsuke/pinact" = "latest"
