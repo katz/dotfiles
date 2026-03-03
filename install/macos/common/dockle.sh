@@ -6,6 +6,7 @@ if [ "${DOTFILES_DEBUG:-}" ]; then
 fi
 
 function install_dockle() {
+    brew tap goodwithtech/r
     if "${CI:-false}"; then
         brew info goodwithtech/r/dockle
     else
