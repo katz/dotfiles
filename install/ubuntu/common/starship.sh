@@ -8,6 +8,7 @@ fi
 readonly BIN_DIR="${HOME}/.local/bin"
 
 function install_starship() {
+    mkdir -p "${BIN_DIR}"
     curl -sS https://starship.rs/install.sh | sh -s -- --yes --bin-dir "${BIN_DIR}"
 }
 
