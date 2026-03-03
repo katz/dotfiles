@@ -1,6 +1,6 @@
 #!/usr/bin/env bats
 
-readonly SCRIPT_PATH="./install/ubuntu/client/cargo.sh"
+readonly SCRIPT_PATH="./install/common/cargo.sh"
 
 function setup() {
     source "${SCRIPT_PATH}"
