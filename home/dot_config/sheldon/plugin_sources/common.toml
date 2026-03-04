@@ -156,6 +156,19 @@ zle -N buffer-fzf-history
 bindkey '^R' buffer-fzf-history
 '''
 
+[plugins.cd-fzf]
+inline = '''
+# ディレクトリ配下のディレクトリに移動する(find > cd)
+# https://qiita.com/lighttiger2505/items/1d2b93cbbfb31fa87786
+cd-fzf-find() {
+    local DIR=$(find ./ -path '*/\.*' -name .git -prune -o -type d -print 2> /dev/null | fzf +m)
+    if [ -n "$DIR" ]; then
+        cd $DIR
+    fi
+}
+alias fd=cd-fzf-find
+'''
+
 [plugins.rbenv]
 inline = '[[ $(command -v rbenv) ]] && eval "$(rbenv init - zsh)"'
 
