@@ -136,6 +136,9 @@ zle -N cd-fzf-ghqlist
 bindkey '^G' cd-fzf-ghqlist
 '''
 
+[plugins.bat]
+inline = '[[ $(command -v bat) ]] && alias cat=bat'
+
 [plugins.eza]
 inline = '''
 # ezaがインストールされてたらlsの代わりに使うようにする

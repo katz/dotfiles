@@ -6,6 +6,7 @@ if [ "${DOTFILES_DEBUG:-}" ]; then
 fi
 
 PACKAGES=(
+    bat
     busybox
     curl
 	direnv
@@ -34,6 +35,12 @@ function install_misc() {
     fi
     ${SUDO} apt-get update
     ${SUDO} apt-get install -y "${PACKAGES[@]}"
+
+    # Ubuntu では bat が batcat としてインストールされるためシンボリックリンクを作成する
+    if command -v batcat &>/dev/null; then
+        mkdir -p "${HOME}/.local/bin"
+        ln -sf /usr/bin/batcat "${HOME}/.local/bin/bat"
+    fi
 }
 
 function uninstall_misc() {

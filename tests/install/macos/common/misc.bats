@@ -138,6 +138,8 @@ function setup() {
     [ "${status}" -eq 0 ]
     run brew info unshield
     [ "${status}" -eq 0 ]
+    run brew info bat
+    [ "${status}" -eq 0 ]
     run brew info vim
     [ "${status}" -eq 0 ]
     run brew info wget
