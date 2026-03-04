@@ -20,7 +20,9 @@ function install_dockle() {
     local arch version
     arch="$(detect_arch)"
     version=$(
-        curl --silent "https://api.github.com/repos/goodwithtech/dockle/releases/latest" \
+        curl --silent \
+            ${GITHUB_TOKEN:+-H "Authorization: Bearer ${GITHUB_TOKEN}"} \
+            "https://api.github.com/repos/goodwithtech/dockle/releases/latest" \
         | grep '"tag_name":' \
         | sed -E 's/.*"v([^"]+)".*/\1/'
     )
