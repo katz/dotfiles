@@ -115,6 +115,14 @@ function _lang() {
 zsh-defer _lang
 '''
 
+[plugins.editor-vim]
+inline = '''
+function _editor() {
+    export EDITOR='vim'
+}
+zsh-defer _editor
+'''
+
 [plugins.theme-dracula]
 github = 'dracula/zsh'
 apply = ['defer']
