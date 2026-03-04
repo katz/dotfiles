@@ -6,6 +6,7 @@ if [ "${DOTFILES_DEBUG:-}" ]; then
 fi
 
 BREW_PACKAGES=(
+    bat
     vim
     htop
     apktool
