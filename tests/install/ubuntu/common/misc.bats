@@ -15,7 +15,7 @@ function teardown() {
 
 @test "[ubuntu-common] PACKAGES for misc" {
     num_packages="${#PACKAGES[@]}"
-    [ $num_packages -eq 18 ]
+    [ $num_packages -eq 19 ]
 
     expected_packages=(
         busybox
@@ -35,6 +35,7 @@ function teardown() {
         unzip
         vim
         wget
+        zoxide
         zsh
     )
     for ((i = 0; i < ${#expected_packages[*]}; ++i)); do
