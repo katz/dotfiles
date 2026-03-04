@@ -23,6 +23,7 @@ PACKAGES=(
     unzip
     vim
     wget
+    zoxide
     zsh
 )
 
