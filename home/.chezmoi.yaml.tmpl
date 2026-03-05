@@ -17,3 +17,4 @@ data:
   isLinux: {{ eq .chezmoi.os "linux" }}
   isClient: {{ eq $system "client" }}
   isServer: {{ eq $system "server" }}
+  isWSL: {{ and (eq .chezmoi.os "linux") (contains "microsoft" (lower .chezmoi.kernel.osrelease)) }}

@@ -21,6 +21,23 @@
   ff = false
   conflictstyle = zdiff3
 
+[alias]
+  pushff = push --force-with-lease --force-if-includes
+
+[commit]
+  gpgsign = true
+
+[gpg]
+  format = ssh
+
+{{ if .isWSL -}}
+[gpg "ssh"]
+  program = "/mnt/c/Program Files/1Password/app/8/op-ssh-sign-wsl"
+{{- else if .isAppleSiliconMac -}}
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+{{- end }}
+
 [transfer]
   fsckobjects = true
 
@@ -82,10 +99,4 @@
   minus-emph-style = syntax bold "#780000"
   minus-style = syntax "#400000"
   plus-emph-style = syntax bold "#007800"
-
-[alias]
-  pushff = push --force-with-lease --force-if-includes
-
-[gpg]
-  format = ssh
 
