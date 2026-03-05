@@ -1,4 +1,4 @@
 [tools]
-ghq = "latest"
-"github:suzuki-shunsuke/ghalint" = "latest"
-"github:suzuki-shunsuke/pinact" = "latest"
+ghq = "1.9.4"
+"github:suzuki-shunsuke/ghalint" = "1.5.5"
+"github:suzuki-shunsuke/pinact" = "3.9.0"
