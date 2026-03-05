@@ -21,6 +21,15 @@
   ff = false
   conflictstyle = zdiff3
 
+[alias]
+  pushff = push --force-with-lease --force-if-includes
+
+[commit]
+  gpgsign = true
+
+[gpg]
+  format = ssh
+
 [transfer]
   fsckobjects = true
 
@@ -82,13 +91,4 @@
   minus-emph-style = syntax bold "#780000"
   minus-style = syntax "#400000"
   plus-emph-style = syntax bold "#007800"
-
-[alias]
-  pushff = push --force-with-lease --force-if-includes
-
-[commit]
-  gpgsign = true
-
-[gpg]
-  format = ssh
 
