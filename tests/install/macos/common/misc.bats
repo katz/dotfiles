@@ -120,8 +120,6 @@ function setup() {
     [ "${status}" -eq 0 ]
     run brew info ripgrep
     [ "${status}" -eq 0 ]
-    run brew info rtk
-    [ "${status}" -eq 0 ]
     run brew info rustscan
     [ "${status}" -eq 0 ]
     run brew info samba
