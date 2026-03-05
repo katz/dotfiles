@@ -61,7 +61,6 @@ BREW_PACKAGES=(
     python
     rbenv
     ripgrep
-    rtk
     rustscan
     samba
     shellcheck
