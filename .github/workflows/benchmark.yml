@@ -35,6 +35,7 @@ jobs:
             isLinux: false
             isClient: true
             isServer: false
+            isWSL: false
           EOF
 
       - name: Apply dotfiles
