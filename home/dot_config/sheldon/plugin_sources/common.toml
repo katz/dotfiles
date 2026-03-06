@@ -223,6 +223,16 @@ FZF-EOF"
 }
 '''
 
+[plugins.fe]
+inline = '''
+# feコマンドで、ファイルの一覧を表示し、選択したファイルをエディタで開く
+fe() {
+    local files
+    IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
+    [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+}
+'''
+
 [plugins.rbenv]
 inline = '[[ $(command -v rbenv) ]] && eval "$(rbenv init - zsh)"'
 
