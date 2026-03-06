@@ -195,6 +195,18 @@ cd-fzf-find() {
 alias fd=cd-fzf-find
 '''
 
+[plugins.git-branch-fzf]
+inline = '''
+# fbrコマンドで今ローカルに存在するbranchを選択して切り替えられるように
+# https://qiita.com/kamykn/items/aa9920f07487559c0c7e
+fbr() {
+    local branches branch
+    branches=$(git branch -vv) &&
+    branch=$(echo "$branches" | fzf +m) &&
+    git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+}
+'''
+
 [plugins.rbenv]
 inline = '[[ $(command -v rbenv) ]] && eval "$(rbenv init - zsh)"'
 
