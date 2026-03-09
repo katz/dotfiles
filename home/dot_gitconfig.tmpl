@@ -33,9 +33,17 @@
 {{ if .isWSL -}}
 [gpg "ssh"]
   program = "/mnt/c/Program Files/1Password/app/8/op-ssh-sign-wsl"
+[credential "https://github.com"]
+  helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+  helper = !/usr/bin/gh auth git-credential
 {{- else if .isAppleSiliconMac -}}
 [gpg "ssh"]
   program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+[credential "https://github.com"]
+  helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+  helper = !/opt/homebrew/bin/gh auth git-credential
 {{- end }}
 
 [transfer]
