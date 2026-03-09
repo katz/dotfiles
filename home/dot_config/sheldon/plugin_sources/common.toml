@@ -207,6 +207,24 @@ fbr() {
 }
 '''
 
+[plugins.git-remote-branch-fzf]
+inline = '''
+# remoteのbranchをcheckoutするコマンド
+# https://zenn.dev/r57ty7/articles/879db0530ad899
+fbrm() {
+	branch=$(git branch -r | fzf +m | sed 's#^ *origin/##')
+	if [[ "$branch" == "" || "$branch" == "*" ]]; then
+		return
+	fi
+
+	res=$(git stash)
+	git switch $branch
+	if [[ ! $res =~ "No local changes" ]]; then
+		git stash pop
+	fi
+}
+'''
+
 [plugins.git-log-fzf]
 inline = '''
 # fshow - git commit browser
