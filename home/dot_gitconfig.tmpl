@@ -6,6 +6,14 @@
   excludesfile = ~/.gitignore_global
   autocrlf = input
 	pager = delta
+{{ if or .isWSL .isAppleSiliconMac -}}
+	editor = code --wait
+{{- end }}
+
+{{ if or .isWSL .isAppleSiliconMac -}}
+[sequence]
+	editor = code --wait
+{{- end }}
 
 [init]
   defaultBranch = main
