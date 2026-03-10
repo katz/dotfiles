@@ -6,16 +6,11 @@
   excludesfile = ~/.gitignore_global
   autocrlf = input
 	pager = delta
-{{ if .isWSL -}}
-	editor = code --wait
-{{- else if .isAppleSiliconMac -}}
+{{ if or .isWSL .isAppleSiliconMac -}}
 	editor = code --wait
 {{- end }}
 
-{{ if .isWSL -}}
-[sequence]
-	editor = code --wait
-{{- else if .isAppleSiliconMac -}}
+{{ if or .isWSL .isAppleSiliconMac -}}
 [sequence]
 	editor = code --wait
 {{- end }}
