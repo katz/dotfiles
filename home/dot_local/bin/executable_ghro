@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# このghroコマンドを使うための下準備
+# 1. GitHubでFine-grained personal access tokenを作成する。権限はリポジトリのreadonly系だけに絞り、secretアクセスなどは閉じておく。
+# 2. 次にreadonly用のプロファイルで認証する。GH_CONFIG_DIRを変えることで通常のghとは別の認証情報を持たせられる。
+#    GH_CONFIG_DIR=~/.config/ghro gh auth login --with-token <<< "<your-token>"
+
+GH_CONFIG_DIR=~/.config/ghro exec gh "$@"
