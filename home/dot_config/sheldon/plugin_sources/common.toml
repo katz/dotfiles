@@ -170,7 +170,7 @@ fi
 inline = '''
 # historyをfzfで絞り込む
 function buffer-fzf-history() {
-    local HISTORY=$(history -n -r 1 | fzf +m)
+    local HISTORY=$(history -n -r 1 | awk '!a[$0]++' | fzf +m)
     BUFFER=$HISTORY
     if [ -n "$HISTORY" ]; then
         CURSOR=$#BUFFER
