@@ -2,5 +2,5 @@
 ghq = "1.9.4"
 "github:suzuki-shunsuke/ghalint" = "1.5.5"
 "github:suzuki-shunsuke/pinact" = "3.9.0"
-"github:rtk-ai/rtk" = "0.23.0"
+"github:rtk-ai/rtk" = "0.24.0"
 rust = "1.93.1"
