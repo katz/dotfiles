@@ -103,7 +103,6 @@ CASK_PACKAGES=(
     ngrok
     obs
     postman
-    powershell
     proxyman
     rectangle-pro
     session-manager-plugin
