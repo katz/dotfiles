@@ -53,6 +53,11 @@
   helper = !/opt/homebrew/bin/gh auth git-credential
 [credential "https://gist.github.com"]
   helper = !/opt/homebrew/bin/gh auth git-credential
+{{- else if .isLinux -}}
+[credential "https://github.com"]
+  helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+  helper = !/usr/bin/gh auth git-credential
 {{- end }}
 
 [transfer]
