@@ -15,9 +15,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: ubuntu-latest
+          - os: ubuntu-slim
             system: client
-          - os: ubuntu-latest
+          - os: ubuntu-slim
             system: server
           - os: macos-14
             system: client
@@ -73,9 +73,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: ubuntu-latest
+          - os: ubuntu-slim
             system: client
-          - os: ubuntu-latest
+          - os: ubuntu-slim
             system: server
           - os: macos-14
             system: client
