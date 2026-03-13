@@ -7,7 +7,13 @@ fi
 
 EXISTING=$(cat)
 
-readonly BASE='{}'
+readonly BASE='{
+	"$schema": "https://json.schemastore.org/claude-code-settings.json",
+	"permissions": {
+		"defaultMode": "auto"
+	},
+	"skipAutoPermissionPrompt": true
+}'
 
 if [ -n "$EXISTING" ]; then
     echo "$EXISTING" | jq -S --argjson base "$BASE" '$base + .'
