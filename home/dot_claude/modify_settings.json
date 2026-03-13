@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+if [ "${DOTFILES_DEBUG:-}" ]; then
+    set -x
+fi
+
+EXISTING=$(cat)
+
+readonly BASE='{}'
+
+if [ -n "$EXISTING" ]; then
+    echo "$EXISTING" | jq -S --argjson base "$BASE" '$base + .'
+else
+    echo "$BASE" | jq -S .
+fi
