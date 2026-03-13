@@ -8,7 +8,7 @@ on:
 
 jobs:
   benchmark:
-    runs-on: macos-14
+    runs-on: ubuntu-slim
     timeout-minutes: 5
     permissions:
       contents: "read"
@@ -21,7 +21,10 @@ jobs:
       - name: Install dependencies
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: brew install gnu-time chezmoi
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y time
+          curl -fsLS get.chezmoi.io | sudo sh -s -- -b /usr/local/bin
 
       - name: Configure chezmoi for CI
         run: |
@@ -31,8 +34,8 @@ jobs:
             name: "CI User"
             email: "ci@example.com"
             system: "client"
-            isAppleSiliconMac: true
-            isLinux: false
+            isAppleSiliconMac: false
+            isLinux: true
             isClient: true
             isServer: false
             isWSL: false
