@@ -24,7 +24,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y time
-          sudo sh -c 'curl -fsLS get.chezmoi.io | sh'
+          curl -fsLS get.chezmoi.io | sudo sh -s -- -b /usr/local/bin
 
       - name: Configure chezmoi for CI
         run: |
