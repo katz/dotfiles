@@ -1,0 +1,12 @@
+{{ if and .isClient (lookPath "git") (eq (output "sh" "-c" "git ls-remote https://github.com/katz/dotfiles_claude.git HEAD >/dev/null 2>&1 && echo true || echo false" | trim) "true") -}}
+".claude/rules":
+  type: git-repo
+  url: "https://github.com/katz/dotfiles_claude.git"
+  refreshPeriod: "168h"
+  pull:
+    args:
+      - "--ff-only"
+  include:
+    - "rules/*"
+  stripComponents: 1
+{{ end -}}
