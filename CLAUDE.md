@@ -8,6 +8,7 @@
 
 ## Bash Scripts
 
+- `.sh` ファイルには実行権限（755）を付与する
 - Shebang: `#!/usr/bin/env bash`
 - エラーハンドリング: `set -Eeuo pipefail`
 - デバッグ: `if [ "${DOTFILES_DEBUG:-}" ]; then set -x; fi` を先頭に入れる
