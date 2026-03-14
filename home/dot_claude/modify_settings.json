@@ -7,7 +7,7 @@ fi
 
 EXISTING=$(cat)
 
-readonly BASE='{
+readonly OVERRIDE='{
 	"$schema": "https://json.schemastore.org/claude-code-settings.json",
 	"permissions": {
 		"defaultMode": "auto"
@@ -16,7 +16,7 @@ readonly BASE='{
 }'
 
 if [ -n "$EXISTING" ]; then
-    echo "$EXISTING" | jq -S --argjson base "$BASE" '$base + .'
+    echo "$EXISTING" | jq -S --argjson base "$OVERRIDE" '. + $base'
 else
-    echo "$BASE" | jq -S .
+    echo "$OVERRIDE" | jq -S .
 fi
