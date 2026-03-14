@@ -41,3 +41,7 @@
   - `run_once_before_01-*` — 前提条件のインストール
   - `run_once_after_01-*` 〜 `run_once_after_03-*` — コアツールのインストール
   - `run_onchange_after_*` — 内容変更時に再実行が必要なもの（プラグインリストなど）
+
+## Pull Request
+
+- 関連するPRやIssueがある場合は、PR本文に記載すること
