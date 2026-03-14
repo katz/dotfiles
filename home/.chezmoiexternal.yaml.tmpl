@@ -1,12 +1,13 @@
 {{ if and .isClient (lookPath "git") (eq (output "sh" "-c" "git ls-remote https://github.com/katz/dotfiles_claude.git HEAD >/dev/null 2>&1 && echo true || echo false" | trim) "true") -}}
+{{ $assetUrl := output "gh" "api" "repos/katz/dotfiles_claude/releases/latest" "--jq" ".assets[] | select(.name == \"rules.tar.gz\") | .url" | trim -}}
 ".claude/rules":
   type: archive
-  url: "https://api.github.com/repos/katz/dotfiles_claude/tarball/main"
+  url: "{{ $assetUrl }}"
   refreshPeriod: "168h"
-  stripComponents: 2
-  include:
-    - "*/rules/*"
+  stripComponents: 1
   header:
     Authorization:
       - "token {{ output "gh" "auth" "token" | trim }}"
+    Accept:
+      - "application/octet-stream"
 {{ end -}}
