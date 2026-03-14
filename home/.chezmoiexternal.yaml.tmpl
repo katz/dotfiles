@@ -1,0 +1,12 @@
+{{ if and .isClient (lookPath "gh") (eq (output "sh" "-c" "gh auth status >/dev/null 2>&1 && echo true || echo false" | trim) "true") -}}
+".claude/rules":
+  type: git-repo
+  url: "https://github.com/katz/dotfiles_claude.git"
+  refreshPeriod: "168h"
+  pull:
+    args:
+      - "--ff-only"
+  include:
+    - "rules/*"
+  stripComponents: 1
+{{ end -}}
