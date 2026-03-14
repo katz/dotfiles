@@ -1,5 +1,11 @@
 # CLAUDE.md
 
+## 知識の記録
+
+- 会話の中でプロジェクト固有の知識が出た場合は、記録を提案すること
+  - 規約・ルール・設計判断 → このファイル（CLAUDE.md）への追記
+  - 複数ステップの手順や繰り返し使うタスク → スキル化
+
 ## Testing
 
 - `install/` 配下にスクリプトを追加・変更したら、対応する bats テストを `tests/install/` 配下に必ず作成・更新すること
@@ -8,6 +14,7 @@
 
 ## Bash Scripts
 
+- `.sh` ファイルには実行権限（755）を付与する
 - Shebang: `#!/usr/bin/env bash`
 - エラーハンドリング: `set -Eeuo pipefail`
 - デバッグ: `if [ "${DOTFILES_DEBUG:-}" ]; then set -x; fi` を先頭に入れる
@@ -34,3 +41,8 @@
   - `run_once_before_01-*` — 前提条件のインストール
   - `run_once_after_01-*` 〜 `run_once_after_03-*` — コアツールのインストール
   - `run_onchange_after_*` — 内容変更時に再実行が必要なもの（プラグインリストなど）
+
+## Pull Request
+
+- 関連するPRやIssueがある場合は、PR本文に記載すること
+- PRにコミットを追加したら、PR本文も合わせて更新すること
