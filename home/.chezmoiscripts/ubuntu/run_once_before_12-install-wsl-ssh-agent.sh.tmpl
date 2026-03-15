@@ -1,0 +1,3 @@
+{{- if .isWSL -}}
+{{ include "../install/ubuntu/common/wsl-ssh-agent.sh" }}
+{{- end }}
