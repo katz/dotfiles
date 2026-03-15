@@ -12,6 +12,19 @@ readonly OVERRIDE='{
 	"permissions": {
 		"defaultMode": "auto"
 	},
+	"sandbox": {
+		"enabled": true,
+		"autoAllowBashIfSandboxed": true,
+		"allowUnsandboxedCommands": true,
+		"excludedCommands": [ "git", "docker" ],
+		"filesystem": {
+			"allowWrite": [ "//tmp" ],
+			"denyRead": [ "~/.aws/credentials", "~/.ssh/", "//mnt/c/*" ]
+		},
+		"network": {
+			"allowLocalBinding": true
+		}
+	},
 	"skipAutoPermissionPrompt": true
 }'
 
