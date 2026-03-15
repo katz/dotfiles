@@ -1,0 +1,6 @@
+{{- if .isAppleSiliconMac }}
+Include conf.d/nodes/macos.conf
+{{- end }}
+{{- if and .isLinux .isClient -}}
+Include conf.d/nodes/linux.conf
+{{- end }}
