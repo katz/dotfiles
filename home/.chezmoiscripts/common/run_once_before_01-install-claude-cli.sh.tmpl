@@ -1,3 +1,6 @@
 {{ if .isClient -}}
 {{ include "../install/common/claude-cli.sh" }}
+{{- if .isLinux }}
+{{ include "../install/common/claude-sandbox-linux.sh" }}
+{{- end }}
 {{- end }}
