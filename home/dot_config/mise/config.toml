@@ -2,6 +2,6 @@
 ghq = "1.9.4"
 "github:suzuki-shunsuke/ghalint" = "1.5.5"
 "github:suzuki-shunsuke/pinact" = "3.9.0"
-"github:rtk-ai/rtk" = "0.30.0"
+"github:rtk-ai/rtk" = "0.30.1"
 "github:Warashi/cage" = "0.1.13"
 rust = "1.94.0"
