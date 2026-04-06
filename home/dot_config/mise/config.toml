@@ -2,7 +2,7 @@
 ghq = "1.9.4"
 "github:suzuki-shunsuke/ghalint" = "1.5.5"
 "github:suzuki-shunsuke/pinact" = "3.9.0"
-"github:rtk-ai/rtk" = "0.34.0"
+"github:rtk-ai/rtk" = "v0.34.1"
 "github:Warashi/cage" = "0.1.13"
 "github:azu/dockerfile-pin" = "1.0.5"
 rust = "1.94.1"
