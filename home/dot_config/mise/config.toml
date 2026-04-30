@@ -1,5 +1,5 @@
 [tools]
-ghq = "1.9.4"
+ghq = "1.10.1"
 "github:suzuki-shunsuke/ghalint" = "1.5.5"
 "github:suzuki-shunsuke/pinact" = "3.9.0"
 "github:rtk-ai/rtk" = "v0.37.2"
