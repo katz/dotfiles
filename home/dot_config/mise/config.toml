@@ -1,6 +1,6 @@
 [tools]
 ghq = "1.9.4"
-"github:suzuki-shunsuke/ghalint" = "1.5.5"
+"github:suzuki-shunsuke/ghalint" = "1.5.6"
 "github:suzuki-shunsuke/pinact" = "3.9.2"
 "github:rtk-ai/rtk" = "v0.38.0"
 "github:Warashi/cage" = "0.1.13"
