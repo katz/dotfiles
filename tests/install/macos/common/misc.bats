@@ -128,8 +128,6 @@ function setup() {
     [ "${status}" -eq 0 ]
     run brew info telnet
     [ "${status}" -eq 0 ]
-    run brew info tflint
-    [ "${status}" -eq 0 ]
     run brew info tfsec
     [ "${status}" -eq 0 ]
     run brew info tnftp
