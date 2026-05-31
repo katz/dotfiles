@@ -65,7 +65,6 @@ BREW_PACKAGES=(
     samba
     shellcheck
     telnet
-    tflint
     tfsec
     tnftp
     trivy
