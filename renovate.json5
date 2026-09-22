@@ -20,6 +20,13 @@
 			"matchDepTypes": [ "action" ],
 			"enabled": true,
 			"pinDigests": true,
+		},
+		// opencode v2はGitHubタグのみでReleaseが作成されておらず、miseのaqua backendが
+		// Releases APIを参照するためインストールできない（E2Eが404で失敗する）。
+		// Releasesが公開されるまで1.x系に留める。
+		{
+			"matchPackageNames": [ "anomalyco/opencode" ],
+			"allowedVersions": "<2.0.0",
 		}
 	]
 }
