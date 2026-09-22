@@ -4,7 +4,11 @@ minimum_release_age = "7d"
 [tools]
 ghq = "1.10.1"
 ollama = "0.34.0"
-opencode = "1.18.30"
+node = "24"
+# opencode v2 は GitHub Release が無く aqua backend では導入できないため npm backend を使う (PR #143)。
+# postinstall でプラットフォーム別バイナリを配置するため allow_builds、
+# aube の新規パッケージ判定を回避するため allow_low_downloads を指定する。
+"npm:@opencode/cli" = { version = "2.0.3", allow_low_downloads = true, allow_builds = ["@opencode/cli"] }
 "github:suzuki-shunsuke/ghalint" = "1.5.6"
 "github:suzuki-shunsuke/pinact" = "5.0.0"
 "github:rtk-ai/rtk" = "v0.49.0"
