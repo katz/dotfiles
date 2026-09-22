@@ -21,5 +21,17 @@
 			"enabled": true,
 			"pinDigests": true,
 		}
+	],
+
+	// opencode は mise 管理外（公式 v2 インストーラで導入）のため custom manager で追従する
+	"customManagers": [
+		{
+			"customType": "regex",
+			"description": "opencode CLI のバージョンを npm の @opencode/cli で追従する",
+			"managerFilePatterns": [ "/^install/common/opencode\\.sh$/" ],
+			"matchStrings": [ "OPENCODE_VERSION=\"(?<currentValue>[^\"]+)\"" ],
+			"datasourceTemplate": "npm",
+			"depNameTemplate": "@opencode/cli"
+		}
 	]
 }
