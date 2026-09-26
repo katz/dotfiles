@@ -8,7 +8,7 @@ fi
 # opencode v2 は npm (@opencode/cli) のプラットフォーム別バイナリとして配布されており、
 # v2 のタグには GitHub Release が作成されていないため mise の aqua backend では導入できない (PR #143)。
 # 公式の v2 インストーラで ~/.opencode/bin にネイティブバイナリを配置する。
-readonly OPENCODE_VERSION="2.0.3"
+readonly OPENCODE_VERSION="2.0.9"
 
 function install_opencode() {
     # --no-modify-path: PATH は dot_zshrc.tmpl 側で管理する
