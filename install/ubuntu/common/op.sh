@@ -26,7 +26,7 @@ function setup_repository() {
 
     # Add the key for the 1Password apt repository
     curl -sS "${KEY_URL}" \
-        | ${SUDO} gpg --dearmor --output "${KEYRING_PATH}"
+        | ${SUDO} gpg --dearmor --yes --output "${KEYRING_PATH}"
 
     # Add the 1Password apt repository
     echo "deb [arch=${arch} signed-by=${KEYRING_PATH}] https://downloads.1password.com/linux/debian/${arch} stable main" \
@@ -39,7 +39,7 @@ function setup_repository() {
 
     ${SUDO} mkdir -p "${DEBSIG_KEYRING_DIR}"
     curl -sS "${KEY_URL}" \
-        | ${SUDO} gpg --dearmor --output "${DEBSIG_KEYRING_DIR}/debsig.gpg"
+        | ${SUDO} gpg --dearmor --yes --output "${DEBSIG_KEYRING_DIR}/debsig.gpg"
 }
 
 function install_op() {
