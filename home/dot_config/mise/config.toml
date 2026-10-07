@@ -2,7 +2,7 @@
 minimum_release_age = "7d"
 
 [tools]
-ghq = "1.10.1"
+ghq = "1.11.2"
 ollama = "0.35.0"
 "github:suzuki-shunsuke/ghalint" = "1.5.6"
 "github:suzuki-shunsuke/pinact" = "5.0.0"
