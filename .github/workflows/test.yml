@@ -19,7 +19,7 @@ jobs:
             system: client
           - os: ubuntu-latest
             system: server
-          - os: macos-14
+          - os: macos-26
             system: client
 
     runs-on: ${{ matrix.os }}
@@ -77,7 +77,7 @@ jobs:
             system: client
           - os: ubuntu-latest
             system: server
-          - os: macos-14
+          - os: macos-26
             system: client
 
     runs-on: ${{ matrix.os }}
