@@ -26,8 +26,6 @@ function setup() {
     [ "${status}" -eq 0 ]
     run brew info awscli
     [ "${status}" -eq 0 ]
-    run brew info azure-cli
-    [ "${status}" -eq 0 ]
     run brew info biome
     [ "${status}" -eq 0 ]
     run brew info blueutil

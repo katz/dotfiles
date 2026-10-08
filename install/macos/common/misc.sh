@@ -14,7 +14,6 @@ BREW_PACKAGES=(
     certifi
     aws-sam-cli
     awscli
-    azure-cli
     biome
     blueutil
     cloudflared
@@ -79,6 +78,7 @@ BREW_PACKAGES=(
 CASK_PACKAGES=(
     1password-cli
     alfred
+    azure-cli
     charles
     cyberduck
     devtoys
