@@ -3,7 +3,7 @@ minimum_release_age = "7d"
 
 [tools]
 ghq = "1.11.2"
-ollama = "0.35.0"
+ollama = "0.35.1"
 "github:suzuki-shunsuke/ghalint" = "1.5.6"
 "github:suzuki-shunsuke/pinact" = "5.0.0"
 "github:rtk-ai/rtk" = "v0.50.0"
