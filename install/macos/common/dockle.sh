@@ -7,6 +7,7 @@ fi
 
 function install_dockle() {
     brew tap goodwithtech/r
+    brew trust --formula goodwithtech/r/dockle >/dev/null 2>&1 || true
     if "${CI:-false}"; then
         brew info goodwithtech/r/dockle
     else
